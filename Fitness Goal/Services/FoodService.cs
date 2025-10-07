@@ -10,7 +10,7 @@ namespace Fitness_Goal.Services
     public class FoodService
     {
         private readonly HttpClient _client;
-        private readonly string _apiKey = "43999fc37dmsh9b45e6650eb5952p1dd0bcjsn03a58b1899c7";
+        private readonly string _apiKey = "add your api key";
         private readonly string _host = "ai-workout-planner-exercise-fitness-nutrition-guide.p.rapidapi.com";
 
         public FoodService()
