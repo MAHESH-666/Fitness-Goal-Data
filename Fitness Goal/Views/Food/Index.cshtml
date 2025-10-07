@@ -1,0 +1,99 @@
+﻿@model Fitness_Goal.Models.FoodAnalysisModel
+
+@{
+    var repeatCount = 100;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container my-4">
+    <h1 class="text-center mb-4">🍽 Food Analysis</h1>
+
+    @for (int i = 0; i < repeatCount; i++)
+    {
+        <div class="card mb-4 shadow-sm border-primary">
+            <div class="card-header bg-primary text-white">
+                Analysis Result #@i
+            </div>
+            <div class="card-body">
+
+                <h4 class="text-success">Foods Identified</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Name</th>
+                                <th>Portion</th>
+                                <th>Calories</th>
+                                <th>Protein</th>
+                                <th>Carbs</th>
+                                <th>Fats</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var f in Model.Result.FoodsIdentified)
+                            {
+                                <tr>
+                                    <td>@f.Name</td>
+                                    <td>@f.PortionSize</td>
+                                    <td>@f.Calories</td>
+                                    <td>@f.Protein</td>
+                                    <td>@f.Carbs</td>
+                                    <td>@f.Fats</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 class="text-warning mt-3">Total Nutrition</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item bg-light">Calories: @Model.Result.TotalNutrition.TotalCalories</li>
+                    <li class="list-group-item bg-light">Protein: @Model.Result.TotalNutrition.TotalProtein</li>
+                    <li class="list-group-item bg-light">Carbs: @Model.Result.TotalNutrition.TotalCarbs</li>
+                    <li class="list-group-item bg-light">Fats: @Model.Result.TotalNutrition.TotalFats</li>
+                    <li class="list-group-item bg-light">Fiber: @Model.Result.TotalNutrition.Fiber</li>
+                    <li class="list-group-item bg-light">Vitamins & Minerals: @string.Join(", ", Model.Result.TotalNutrition.VitaminsMinerals)</li>
+                </ul>
+
+                <h4 class="text-info">Meal Analysis</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item bg-light">Meal Type: @Model.Result.MealAnalysis.MealType</li>
+                    <li class="list-group-item bg-light">Balance Score: @Model.Result.MealAnalysis.BalanceScore</li>
+                    <li class="list-group-item bg-light">Protein Ratio: @Model.Result.MealAnalysis.ProteinRatio</li>
+                    <li class="list-group-item bg-light">Carb Ratio: @Model.Result.MealAnalysis.CarbRatio</li>
+                    <li class="list-group-item bg-light">Fat Ratio: @Model.Result.MealAnalysis.FatRatio</li>
+                </ul>
+
+                <h4 class="text-danger">Health Insights</h4>
+                <p class="fw-bold">@Model.Result.HealthInsights.MealBalance</p>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item bg-light">Positive Aspects: @string.Join(", ", Model.Result.HealthInsights.PositiveAspects)</li>
+                    <li class="list-group-item bg-light">Improvement Areas: @string.Join(", ", Model.Result.HealthInsights.ImprovementAreas)</li>
+                    <li class="list-group-item bg-light">Suggestions: @string.Join(", ", Model.Result.HealthInsights.Suggestions)</li>
+                </ul>
+
+                <h4 class="text-secondary">Dietary Flags</h4>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item bg-light">Vegetarian: @Model.Result.DietaryFlags.IsVegetarian</li>
+                    <li class="list-group-item bg-light">Vegan: @Model.Result.DietaryFlags.IsVegan</li>
+                    <li class="list-group-item bg-light">Gluten Free: @Model.Result.DietaryFlags.IsGlutenFree</li>
+                    <li class="list-group-item bg-light">Dairy Free: @Model.Result.DietaryFlags.IsDairyFree</li>
+                    <li class="list-group-item bg-light">Allergens: @string.Join(", ", Model.Result.DietaryFlags.Allergens)</li>
+                </ul>
+
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    body {
+        background: #f7f9fc;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s;
+    }
+</style>
