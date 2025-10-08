@@ -11,7 +11,7 @@ namespace Fitness_Goal.Services
     {
         private readonly HttpClient _client;
         private readonly string _apiKey = "add your api key";
-        private readonly string _host = "ai-workout-planner-exercise-fitness-nutrition-guide.p.rapidapi.com";
+        private readonly string _host = "add your host";
 
         public FoodService()
         {
@@ -137,3 +137,4 @@ namespace Fitness_Goal.Services
         }
     }
 }
+//ai-workout-planner-exercise-fitness-nutrition-guide.p.rapidapi.com
